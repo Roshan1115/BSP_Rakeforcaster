@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETA Prediction Homepage</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+
+<style>
+  body{
+    background-color: rgb(222, 220, 220);
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin: 0;
+    background-color: white;
+
+  }
+
+  th,
+  td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .hd {
+    text-align: center;
+  }
+
+  .r1 {
+    background-color: rgb(245, 115, 59);
+    color: white;
+  }
+  .tbcont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+
+
+
+<body>
+
+  <div class="hd">
+    <h1>Estimated Time of Arival (ETA) Prediction Model</h1>
+  </div>
+
+  <div class="tbcont">
+
+    <table>
+      <thead>
+        <tr class="row r1">
+          <th>Serial Number</th>
+          <th>Rake Id</th>
+          <th>Load Type</th>
+          <th>Station From</th>
+          <th>Station to</th>
+          <th>Load/Empty</th>
+          <th>CNSR</th>
+          <th>Commodity</th>
+          <th>Departure Time</th>
+          <th>Status</th>
+          <th>ETA</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for index, row in df.iterrows %}
+        <tr class="row">
+          <td>{{  forloop.counter  }}</td>
+          <td>{{ row.RakeID }}</td>
+          <td>{{ row.LoadType }}</td>
+          <td>{{ row.SttnFrom }}</td>
+          <td>{{ row.SttnTo }}</td>
+          <td>{{ row.LEFlag }}</td>
+          <td>{{ row.Cnsr }}</td>
+          <td>{{ row.Cmdt }}</td>
+          <td>{{ row.DeptTime }}</td>
+          <td>{{ row.LoadStts }}</td>
+          <td>{{ row.ETA }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>
