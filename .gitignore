@@ -1,2 +1,5 @@
 lib/
 Rake_forcaster/estimator/GS_Model.joblib
+bin/
+include/
+pyvenv.cfg
